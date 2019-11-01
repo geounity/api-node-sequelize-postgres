@@ -4,7 +4,8 @@
   "description": "Moderator app of the points of view in debates - Database module",
   "main": "database/index.js",
   "scripts": {
-    "setup": "DEBUG=gu:* node database/setup.js"
+    "setup": "DEBUG=gu:* node database/setup.js",
+    "setup:production": "NODE_ENV=production node database/setup.js"
   },
   "author": "Sebastian Cardoso Castillo <sebastiancardoso92@gmail.com> (http://sebastiancardoso.com)",
   "license": "MIT",

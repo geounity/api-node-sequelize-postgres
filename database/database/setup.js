@@ -40,7 +40,10 @@ async function setup() {
   // Up initial data with SQL Files
   const countriesSQL = fs.readFileSync("./fixtures/Countries.sql").toString();
   const statesSQL = fs.readFileSync("./fixtures/States.sql").toString();
-  const client = new Client();
+  const config = {
+    ssl : true
+  }
+  const client = new Client(config);
   await client.connect();
   await client.query(countriesSQL, err => (err ? handleFatalError(err) : ""));
   await client.query(statesSQL, err => (err ? handleFatalError(err) : ""));
