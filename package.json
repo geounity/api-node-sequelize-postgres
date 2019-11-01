@@ -6,7 +6,7 @@
   "main": "server.js",
   "scripts": {
     "dev": "DEBUG=geounity:* nodemon server.js",
-    "start": "node server.js"
+    "start": "DEBUG=geounity:* node server.js"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,7 @@
     "chalk": "^2.4.2",
     "cors": "^2.8.5",
     "database_geounity_sequelize": "file:database",
+    "debug": "^4.1.1",
     "express": "^4.17.1",
     "mongoose": "^5.7.7",
     "morgan": "^1.9.1"
@@ -32,8 +33,7 @@
     "@babel/cli": "^7.6.4",
     "@babel/core": "^7.6.4",
     "@babel/node": "^7.6.3",
-    "@babel/preset-env": "^7.6.3",
-    "debug": "^4.1.1"
+    "@babel/preset-env": "^7.6.3"
   },
   "engines": {
     "node": "10.x"
