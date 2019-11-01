@@ -1,9 +1,11 @@
 "use strict";
 
 // debuging
+if (process.env.NODE_ENV !== "production") {
+  const debug = require("debug")("gu:api:index")
+}
 const chalk = require("chalk");
-const debug = require("debug")("gu:api:index");
-const morgan = require('morgan')
+const morgan = require("morgan");
 
 // server
 const express = require("express");
@@ -14,8 +16,8 @@ const server = require("http").Server(app);
 const config = require("./config");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-app.use(cors())
-app.use(morgan('dev'))
+app.use(cors());
+app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
