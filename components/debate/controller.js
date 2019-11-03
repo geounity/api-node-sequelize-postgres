@@ -3,10 +3,11 @@ const store = require("./store");
 
 const saveDebate = (username, community, debate) =>
   new Promise((resolve, reject) => {
+    if (debate.title.length > 100) {
+      reject('El título puede tener hasta 100 caracteres')
+    }
     if (debate.description.length > 1000) {
-      reject(
-        new Error("La descrición debe tener un máximo de 1000 caracteres")
-      );
+      reject("La descrición debe tener un máximo de 1000 caracteres");
     }
     resolve(store.saveDebate(username, community, debate));
   });

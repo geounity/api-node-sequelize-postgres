@@ -6,10 +6,10 @@ const models = require("./models");
 if (process.env.NODE_ENV !== "production") require("longjohn");
 
 module.exports = async (setup = false) => {
-  debug("Sequelize connecting to Postgres");
   const sequelize = models.sequelize;
   await sequelize.authenticate();
   await sequelize.sync({ force: setup });
+  debug("[Sequelize] conected to Postgres");
 
   // Services
   const countryService = require("./services/country");

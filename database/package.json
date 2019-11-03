@@ -1,5 +1,5 @@
 {
-  "name": "database_geounity_sequelize",
+  "name": "postgres-geounity",
   "version": "0.1.0",
   "description": "Moderator app of the points of view in debates - Database module",
   "main": "database/index.js",

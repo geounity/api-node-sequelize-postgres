@@ -1,22 +1,24 @@
 const store = require("./store");
 
-const addUser = user =>
-  new Promise((resolve, reject) => {
-    if (user.username) {
-      if (user.username.length < 3 || user.username.length > 15) {
-        reject("Username between 3 and 15 chars");
-      }
+const getUsers = filterUser =>
+  new Promise(async (resolve, reject) => {
+    try {
+      users = await store.list(filterUser);
+      resolve(users);
+    } catch (e) {
+      reject(e);
     }
-    if (!user.email) {
-      reject("Empty email");
-      return false;
-    }
-    store.add(user).then(res => resolve(res));
   });
 
-const getUsers = filterUser =>
+const addUser = user =>
   new Promise((resolve, reject) => {
-    resolve(store.list(filterUser));
+    if (!user.username || !user.email) {
+      reject("Invalid data");
+    }
+    if (user.username.length < 3 || user.username.length > 15) {
+      reject("Username between 3 and 15 chars");
+    }
+    resolve(store.add(user));
   });
 
 const updateUser = (username, payload) =>
@@ -37,8 +39,8 @@ const getUsernameByEmail = email =>
   });
 
 module.exports = {
-  addUser,
   getUsers,
+  addUser,
   updateUser,
   getUserById,
   getUsernameByEmail

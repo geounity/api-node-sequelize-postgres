@@ -16,8 +16,9 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
+  const user = req.body;
   controller
-    .addUser(req.body)
+    .addUser(user)
     .then(data => {
       response.success(req, res, data, 201);
     })
@@ -39,16 +40,16 @@ router.patch("/", (req, res) => {
 });
 
 router.get("/username/:email", (req, res) => {
-  const { email } = req.params
+  const { email } = req.params;
   controller
     .getUsernameByEmail(email)
     .then(data => {
-      response.success(req, res, data, 200)
+      response.success(req, res, data, 200);
     })
     .catch(e => {
-      response.error(req, res, "Internal error", 500, e)
-    })
-})
+      response.error(req, res, "Internal error", 500, e);
+    });
+});
 
 router.get("/:id", (req, res) => {
   const filterUserById = req.params.id || null;

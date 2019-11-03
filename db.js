@@ -1,16 +1,17 @@
 const chalk = require("chalk");
 
-const db = require("mongoose");
-// const dbPostgres = require("databas_geounity_sequelize");
+const dbMongo = require("mongoose");
+// const dbPostrgres = require('postgres-geounity')
 
-db.Promise = global.Promise;
+dbMongo.Promise = global.Promise;
+// dbPostgres.Promise = global.Promise;
 
 const connectMongo = async url => {
-  await db.connect(url, {
+  await dbMongo.connect(url, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   });
-  console.log(chalk.green("[db] Conected succefull!!"));
+  console.log(chalk.green("[MongoDB] Conected succefull!!"));
 };
 
 // const connectPostgres = async () => {

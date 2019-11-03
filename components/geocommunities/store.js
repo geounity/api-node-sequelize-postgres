@@ -1,7 +1,7 @@
 const debug = require("debug")("geounity:store:geocommunity");
 
 // Instancia de base de datos con Sequelize
-const db = require("database_geounity_sequelize");
+const db = require("postgres-geounity");
 
 let service, geocommunity;
 

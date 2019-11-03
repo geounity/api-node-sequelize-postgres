@@ -79,18 +79,8 @@ module.exports = function setupUserService(UserModel) {
 
   async function updateInfo(username, payload) {
     debug(`Update user ${username}`)
-    console.log('PAYLOAD: ', payload)
     const result = await UserModel.update(
-      {
-        name: payload.name,
-        lastname: payload.lastname,
-        datebirth: payload.datebirth || null,
-        service: payload.service,
-        link: payload.link,
-        photo: payload.fileName,
-        showAge: payload.show_age,
-        showName: payload.show_name
-      },
+      payload,
       {
         where: { username }
       }
